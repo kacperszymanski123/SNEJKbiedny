@@ -38,8 +38,8 @@ while game:
         scoreboard.gameover()
         game = False
 
-    for seg in snake.segments:
-        if snake.segments[0].distance(seg) < 10 and seg != snake.segments[0]:
+    for seg in snake.segments[1:]:
+        if snake.segments[0].distance(seg) < 10:
             game = False
             scoreboard.gameover()
 

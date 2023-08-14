@@ -6,11 +6,7 @@ class Snake:
         startowe = [(0, 0), (-20, 0), (-40, 0)]
         self.segments = []
         for el in startowe:
-            segment = Turtle('square')
-            segment.color('white')
-            segment.up()
-            segment.goto(el)
-            self.segments.append(segment)
+            self.add_seg(el)
 
     def move(self):
         for i in range(len(self.segments) - 1, 0, -1):
@@ -35,3 +31,12 @@ class Snake:
         if self.segments[0].heading() != 180.0:
             self.segments[0].setheading(0)
 
+    def add_seg(self, position):
+        segment = Turtle('square')
+        segment.color('white')
+        segment.up()
+        segment.goto(position)
+        self.segments.append(segment)
+
+    def extend(self):
+        self.add_seg(self.segments[-1].position())
